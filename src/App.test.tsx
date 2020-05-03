@@ -1,12 +1,12 @@
 import React from "react";
 import { mount } from "enzyme";
 import App from "./App";
-import AudioSignal from "./components/AudioSignal/AudioSignal";
+import AudioForm from "./components/AudioForm/AudioForm";
 
 describe("<App /> suite", () => {
   it("renders correctly", () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find(AudioSignal).exists()).toBeTruthy();
+    expect(wrapper.find(AudioForm).exists()).toBeTruthy();
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,6 +1,10 @@
 import React from "react";
 
-const Peaks = (): React.ReactElement => {
+interface Props {
+  peaksUrl: string;
+}
+
+const Peaks = ({ peaksUrl }: Props): React.ReactElement => {
   return (
     <div>
       <div id="waveform-container">
@@ -12,9 +16,8 @@ const Peaks = (): React.ReactElement => {
         <audio
           id="audio"
           controls
-          src="https://storage.googleapis.com/annotation_tool_feebris/lung_sound_2.wav"
+          src={peaksUrl}
           />
-          {/* src="https://storage.googleapis.com/annotation_tool_feebris/lung_sound_2.wav" */}
 
         <button data-action="zoom-in">Zoom in</button>
         <button data-action="zoom-out">Zoom out</button>
