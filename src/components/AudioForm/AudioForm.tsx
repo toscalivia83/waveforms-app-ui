@@ -7,11 +7,11 @@ interface Props {
 }
 
 const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
-  const [breathsNumber, setBreathsNumber] = useState("0");
+  const [numberOfBreaths, setNumberOfBreaths] = useState("0");
   const [hasHeartBeats, setHasHeartBeats] = useState(false);
 
   const reinitializeAudioFormDetails = (): void => {
-    setBreathsNumber("0");
+    setNumberOfBreaths("0");
     setHasHeartBeats(false);
   };
 
@@ -21,11 +21,10 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
       <div>
         <label>Number of breaths</label>
         <input
-          name="breathsNumber"
-          value={breathsNumber}
+          name="numberOfBreaths"
+          value={numberOfBreaths}
           onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-            console.log("breath nb field changed");
-            setBreathsNumber(event.target.value);
+            setNumberOfBreaths(event.target.value);
           }}/>
       </div>
       <div>
@@ -43,7 +42,7 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
         type="submit"
         onClick={(event: React.MouseEvent): void => {
           event.preventDefault();
-          onSubmit({ breathsNumber, hasHeartBeats, url: peaksUrl });
+          onSubmit({ numberOfBreaths, hasHeartBeats, audioUrl: peaksUrl });
           reinitializeAudioFormDetails();
         }} value="Submit"
       />

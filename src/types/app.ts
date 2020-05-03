@@ -1,7 +1,7 @@
 export interface AudioFormDetails {
-  breathsNumber: string;
+  numberOfBreaths: string;
   hasHeartBeats: boolean;
-  url: string;
+  audioUrl: string;
 }
 
 export interface AudioWaveformResponse {

@@ -12,8 +12,10 @@ const App = (): React.ReactElement => {
 
   React.useEffect(() => {
     async function getLungSoundData(): Promise<void> {
-      const lungSoundDataResponse = await ApiClient.getLungSoundData(recordId.toString());
-      console.log("lungSoundDataResponse", lungSoundDataResponse);
+      if (recordId < 11 ) {
+        const lungSoundDataResponse = await ApiClient.getLungSoundData(recordId.toString());
+        console.log("lungSoundDataResponse", lungSoundDataResponse);
+      }
       // setLungSoundData(lungSoundDataResponse?.result?.lungSoundData || "");
     }
 
@@ -24,6 +26,7 @@ const App = (): React.ReactElement => {
   return (
     <div className="App">
       This is my Feebris application
+      <h1>Audio Waveform numero {recordId}:</h1>
       <Peaks peaksUrl={peaksUrl}/>
       <AudioForm
         peaksUrl={peaksUrl}

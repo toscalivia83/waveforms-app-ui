@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 
 const stethoscopeRecordSchema = new mongoose.Schema({
   audioUrl: String,
-  annotationData: {
-    numberOfBreaths: Number,
-    hasHeartBeat: Boolean,
-  }
+  numberOfBreaths: Number,
+  hasHeartBeats: Boolean,
 });
 
 module.exports = mongoose.model('stethoscopeRecord', stethoscopeRecordSchema);
