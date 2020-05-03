@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var https = require('https');
 var fs = require('fs');
-const appConfig = require('./config/appConfig.js');
+const appConfig = require('./src/config/appConfig.js');
 const StethoscopeRecord = require('./src/models/stethoscopeRecord.js');
 
 const app = express();
@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database setup: mongoose
-require('./services/mongoDB.js').connect(appConfig.mongo.url);
+require('./src/services/mongoDB.js').connect(appConfig.mongo.url);
 
 // Database setup: direct mongo client
-require('./services/mongoDB.js').init(appConfig.mongo.url);
+require('./src/services/mongoDB.js').init(appConfig.mongo.url);
 
 app.get('/lung-sound/:id', (req, res) => {
   const id = req.params.id;
