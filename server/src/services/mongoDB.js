@@ -2,7 +2,7 @@ const VError = require('verror');
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 const appConfig = require('../config/appConfig.js');
-// const LOG = require("../utils/logger");
+const LOG = require("../utils/logger");
 
 let client;
 let db;
@@ -12,15 +12,13 @@ module.exports.connect = function(mongoUrl) {
   mongoose.Promise = Promise;
   mongoose.connection
     .on('error', function(err) {
-      // LOG.logError(new VError(err, 'Mongoose failed to connect to DB %s', mongoUrl));
+      LOG.logError(new VError(`Mongoose failed to connect to DB ${mongoUrl}`, err));
     })
     .on('open', function() {
-      console.log('Mongoose connected to DB %s', mongoUrl);
-      
-      // LOG.logRequest('Mongoose connected to DB %s', mongoUrl);
+      LOG.logRequest(`Mongoose connected to DB ${mongoUrl}`);
     })
     .on('reconnected', function() {
-      // LOG.logRequest('Mongoose re-connected to DB %s', mongoUrl);
+      LOG.logRequest(`Mongoose re-connected to DB ${mongoUrl}`);
     });
   mongoose.connect(mongoUrl);
 };

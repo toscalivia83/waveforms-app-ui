@@ -19,8 +19,8 @@ const config = {
 
   mongo: {
     allowPurgeData: false, // Allow routes that purge DB (eg for DEV or TEST)
-    dbName: process.env.MONGO_DB,
-    url: process.env.MONGO_CONNECTION_STRING,
+    dbName: 'dev',
+    url: 'mongodb://localhost/dev',
   },
 
 };
