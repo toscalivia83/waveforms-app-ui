@@ -1,4 +1,4 @@
-import { AudioWaveformResponse, AudioFormDetails } from "../types/app";
+import { AudioFormDetails, AudioAnnotationResponse } from "../types/app";
 import { HttpError, BaseResponse } from "../types/http";
 
 export class ApiClient {
@@ -6,26 +6,6 @@ export class ApiClient {
 
   public constructor(baseUrl: string) {
     this.host = baseUrl;
-  }
-
-  public async getLungSoundData(recordId: string): Promise<BaseResponse<AudioWaveformResponse>> {
-    const uri = `${this.host}/lung-sound/${recordId}`;
-    const response = await fetch(uri);
-
-    try  {
-      const responseJson = await response.json();
-      console.log("responseJson", responseJson);
-      
-      return {
-        statusCode: response.status,
-        result: responseJson
-      };
-    } catch (e) {
-      const error: HttpError = new Error(`request for ${uri} failed`);
-      error.notFound = response.status === 404;
-      error.status = response.status;
-      throw error;
-    }
   }
 
   public async postAudioFormDetails(audioForm: AudioFormDetails): Promise<BaseResponse<string>> {
@@ -42,8 +22,7 @@ export class ApiClient {
 
     try  {
       const responseText = await response.text();
-      console.log("responseText", responseText);
-      
+
       return {
         statusCode: response.status,
         result: responseText
@@ -55,6 +34,26 @@ export class ApiClient {
       throw error;
     }
   }
+
+  public async getAudioAnnotations(): Promise<BaseResponse<AudioAnnotationResponse>> {
+    const uri = `${this.host}/audio-annotations`;
+    const response = await fetch(uri);
+
+    try  {
+      const responseJson = await response.json();
+
+      return {
+        statusCode: response.status,
+        result: responseJson
+      };
+    } catch (e) {
+      const error: HttpError = new Error(`request for ${uri} failed`);
+      error.notFound = response.status === 404;
+      error.status = response.status;
+      throw error;
+    }
+  };
+
 }
 
 export default new ApiClient(`${window.location.protocol}//${window.location.host}`);

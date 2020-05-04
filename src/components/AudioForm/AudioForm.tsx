@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AudioFormDetails } from "../../types/app";
+import styles from "./AudioForm.module.css";
 
 interface Props {
   peaksUrl: string;
@@ -16,10 +17,9 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
   };
 
   return (
-    <div>
-
+    <div className={styles.container}>
       <div>
-        <label>Number of breaths</label>
+        <label>Number of breaths: </label>
         <input
           name="numberOfBreaths"
           value={numberOfBreaths}
@@ -28,7 +28,7 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
           }}/>
       </div>
       <div>
-        <label>Presence of heart beats</label>
+        <label>Presence of heart beats ? </label>
         <input
           type="checkbox"
           name="termsAndConditions"

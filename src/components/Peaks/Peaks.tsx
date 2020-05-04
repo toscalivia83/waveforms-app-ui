@@ -17,7 +17,7 @@ const Peaks = ({ peaksUrl }: Props): React.ReactElement => {
           id="audio"
           controls
           src={peaksUrl}
-          />
+        />
 
         <button data-action="zoom-in">Zoom in</button>
         <button data-action="zoom-out">Zoom out</button>

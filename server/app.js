@@ -18,40 +18,11 @@ require('./src/services/mongoDB.js').connect(appConfig.mongo.url);
 // Database setup: direct mongo client
 require('./src/services/mongoDB.js').init(appConfig.mongo.url);
 
-app.get('/lung-sound/:id', async (req, res) => {
-  const id = req.params.id;
-  res.json({result: 'ok'});
-  // return await new Promise((resolve, reject) => {
-  //   var file = fs.createWriteStream(`./server/lung-sound_${id}.mp3`);
-
-  //   const request = https.get(
-  //     `https://storage.googleapis.com/annotation_tool_feebris/lung_sound_${id}.wav`,
-  //     res => res.pipe(file)
-  //   );
-  //   request.on('error', e => new Error(`Promise rejected: ${e.message}`));
-    
-  //   request.end;
-  //   console.log("HERE1");
-  //   resolve();
-  //   res.json({result: 'ok'});
-  // })
-  // .catch(err => console.log("err", err));
-
-  // console.log("HERE2");
-  // exec(`audiowaveform -i ./server/lung-sound_${id}.mp3 -o ./server/lung-sound_${id}.dat -b 8`, (error, stdout, stderr) => {
-  //   if (error) {
-  //       console.log(`error: ${error.message}`);
-  //       return;
-  //   }
-  //   if (stderr) {
-  //       console.log(`stderr: ${stderr}`);
-  //       return;
-  //   }
-  //   console.log(`stdout: ${stdout}`);
-  // });
-
-  // res.json({result: 'ok'});
-});
+app.get('/audio-annotations', (req, res, next) => {
+  return StethoscopeRecord.find()
+  .then(results => res.json({audioAnnotations: results}))
+  .catch(err => next(new VError("Can\'t get audio annotations")));
+})
 
 app.post('/audio-form-results', (req,res) => {
   StethoscopeRecord.create(req.body)

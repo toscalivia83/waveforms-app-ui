@@ -4,6 +4,10 @@ export interface AudioFormDetails {
   audioUrl: string;
 }
 
-export interface AudioWaveformResponse {
-  lungSoundData: string;
+export interface AudioAnnotation extends AudioFormDetails {
+  _id: number;
+}
+
+export interface AudioAnnotationResponse {
+  audioAnnotations: AudioAnnotation[];
 }

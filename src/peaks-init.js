@@ -9,7 +9,7 @@ export const init = (recordId) => {
       },
       mediaElement: document.getElementById("audio"),
       dataUri: {
-        arraybuffer: `test_${recordId}.dat`,
+        arraybuffer: `lung_sound_${recordId}.dat`,
       },
       keyboard: true,
       pointMarkerColor: "#006eb0",

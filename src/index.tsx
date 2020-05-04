@@ -5,7 +5,7 @@ import App from "./App";
 import * as PeaksInit from "./peaks-init";
 import * as serviceWorker from "./serviceWorker";
 
-let recordId = 5;
+let recordId = 1;
 
 ReactDOM.render(
   <React.StrictMode>
