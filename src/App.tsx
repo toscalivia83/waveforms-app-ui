@@ -30,7 +30,6 @@ const App = ({ recordId, onRecordIdChange }: Props): React.ReactElement => {
 
   return (
     <div className="App">
-      This is my Feebris application
       <h1>Audio Waveform numero {recordingId}:</h1>
       <Peaks peaksUrl={peaksUrl}/>
       {isEndOfRecords && <div>No more records</div>}
