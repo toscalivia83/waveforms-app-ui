@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Peaks.module.css";
 
 interface Props {
   peaksUrl: string;
@@ -12,7 +13,7 @@ const Peaks = ({ peaksUrl }: Props): React.ReactElement => {
         <div id="overview-container"></div>
       </div>
 
-      <div id="demo-controls">
+      <div id="demo-controls" className={styles.demoControls}>
         <audio
           id="audio"
           controls

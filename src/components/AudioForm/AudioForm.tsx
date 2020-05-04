@@ -18,6 +18,7 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
 
   return (
     <div className={styles.container}>
+      <h2>Add annotations here:</h2>
       <div>
         <label>Number of breaths: </label>
         <input
@@ -38,14 +39,15 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
           }}
         />
       </div>
-      <input
+      <button
         type="submit"
         onClick={(event: React.MouseEvent): void => {
           event.preventDefault();
           onSubmit({ numberOfBreaths, hasHeartBeats, audioUrl: peaksUrl });
           reinitializeAudioFormDetails();
-        }} value="Submit"
-      />
+        }}
+        className={styles.submitButton}
+      >Submit</button>
     </div>
   );
 };

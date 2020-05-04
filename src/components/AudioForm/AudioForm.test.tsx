@@ -9,6 +9,6 @@ describe("<AudioForm /> suite", () => {
     const wrapper = mount(<AudioForm peaksUrl={peaksUrl} onSubmit={jest.fn().mockResolvedValue(Promise.resolve())}/>);
     expect(wrapper.find("input[name='numberOfBreaths']")).toHaveLength(1);
     expect(wrapper.find("input[name='hasHeartBeats']")).toHaveLength(1);
-    expect(wrapper.find("input[type='submit']")).toHaveLength(1);
+    expect(wrapper.find("button[type='submit']")).toHaveLength(1);
   });
 });

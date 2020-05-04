@@ -38,7 +38,7 @@ describe("<App /> suite", () => {
       checked: true,
     } });
 
-    wrapper.find("input[type='submit']").simulate("click");
+    wrapper.find("button[type='submit']").simulate("click");
 
     await act(async (): Promise<void> => {
       await flushPromise();
@@ -111,7 +111,7 @@ describe("<App /> suite", () => {
       checked: true,
     } });
 
-    wrapper.find("input[type='submit']").simulate("click");
+    wrapper.find("button[type='submit']").simulate("click");
 
     await act(async (): Promise<void> => {
       await flushPromise();
