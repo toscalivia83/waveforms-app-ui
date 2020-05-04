@@ -34,10 +34,10 @@ const App = ({ recordId, onRecordIdChange }: Props): React.ReactElement => {
       <h1>Audio Waveform numero {recordingId}:</h1>
       <Peaks peaksUrl={peaksUrl}/>
       {isEndOfRecords && <div>No more records</div>}
-      <AudioForm
+      {!isEndOfRecords && <AudioForm
         peaksUrl={peaksUrl}
         onSubmit={onAudioFormSubmit}
-      />
+      />}
       <AnnotationsPage
         displayAnnotation={displayAnnotation}
         onClick={(): void => {

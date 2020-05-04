@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ApiClient from "../../service/ApiClient";
 import { AudioAnnotation } from "../../types/app";
 import AudioAnnotations from "./AudioAnnotations";
+import styles from "./AnnotationsPage.module.css";
 
 interface Props {
   displayAnnotation: boolean;
@@ -24,7 +25,7 @@ const AnnotationsPage = ({ displayAnnotation, onClick }: Props): React.ReactElem
   }, [displayAnnotation]);
 
   return (
-    <>
+    <div className={styles.container}>
       <button
         onClick={(): void => onClick()}>
         {!displayAnnotation ? "Display submitted infos" : "Hide submitted infos"}
@@ -41,7 +42,7 @@ const AnnotationsPage = ({ displayAnnotation, onClick }: Props): React.ReactElem
         displayAnnotation && !audioAnnotations.length &&
         <div>No audio Annotations registered</div>
       }
-    </>
+    </div>
   );
 };
 
