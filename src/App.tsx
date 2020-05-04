@@ -5,15 +5,20 @@ import ApiClient from "./service/ApiClient";
 import AudioForm from "./components/AudioForm/AudioForm";
 import Peaks from "./components/Peaks/Peaks";
 
-const App = (): React.ReactElement => {
-  const [recordId, setRecordId] = useState(1);
+interface Props {
+  recordId: number;
+  onRecordIdChange: Function;
+}
+
+const App = ({ recordId, onRecordIdChange }: Props): React.ReactElement => {
+  const [recordingId, setRecordingId] = useState(recordId);
   // const [lungSoundData, setLungSoundData] = useState({"hey"});
-  const peaksUrl = `https://storage.googleapis.com/annotation_tool_feebris/lung_sound_${recordId}.wav`;
+  const peaksUrl = `https://storage.googleapis.com/annotation_tool_feebris/lung_sound_${recordingId}.wav`;
 
   React.useEffect(() => {
     async function getLungSoundData(): Promise<void> {
-      if (recordId < 11 ) {
-        const lungSoundDataResponse = await ApiClient.getLungSoundData(recordId.toString());
+      if (recordingId < 11 ) {
+        const lungSoundDataResponse = await ApiClient.getLungSoundData(recordingId.toString());
         console.log("lungSoundDataResponse", lungSoundDataResponse);
       }
       // setLungSoundData(lungSoundDataResponse?.result?.lungSoundData || "");
@@ -21,18 +26,19 @@ const App = (): React.ReactElement => {
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     getLungSoundData();
-  }, [recordId]);
+  }, [recordId, recordingId]);
 
   return (
     <div className="App">
       This is my Feebris application
-      <h1>Audio Waveform numero {recordId}:</h1>
+      <h1>Audio Waveform numero {recordingId}:</h1>
       <Peaks peaksUrl={peaksUrl}/>
       <AudioForm
         peaksUrl={peaksUrl}
         onSubmit={async (audioFormDetails: AudioFormDetails): Promise<void> => {
           await ApiClient.postAudioFormDetails(audioFormDetails);
-          setRecordId(recordId + 1);
+          setRecordingId(recordingId + 1);
+          onRecordIdChange(recordingId + 1);
         }}/>
     </div>
   );

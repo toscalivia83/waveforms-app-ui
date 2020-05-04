@@ -5,13 +5,21 @@ import App from "./App";
 import * as PeaksInit from "./peaks-init";
 import * as serviceWorker from "./serviceWorker";
 
+let recordId = 5;
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App
+      recordId={recordId}
+      onRecordIdChange={(recordingId: number): void => {
+        recordId = recordingId;
+        PeaksInit.init(recordId);
+      }}
+    />
   </React.StrictMode>,
   document.getElementById("root")
 );
 
-PeaksInit.init();
+PeaksInit.init(recordId);
 
 serviceWorker.unregister();

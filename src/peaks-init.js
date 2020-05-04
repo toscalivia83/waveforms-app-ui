@@ -1,18 +1,18 @@
-import peaks from 'peaks.js';
+import peaks from "peaks.js";
 
-export const init = () => {
+export const init = (recordId) => {
   (function(Peaks) {
-    var options = {
+    const options = {
       containers: {
-        zoomview: document.getElementById('zoomview-container'),
-        overview: document.getElementById('overview-container')
+        zoomview: document.getElementById("zoomview-container"),
+        overview: document.getElementById("overview-container")
       },
-      mediaElement: document.getElementById('audio'),
+      mediaElement: document.getElementById("audio"),
       dataUri: {
-        arraybuffer: 'test.dat',
+        arraybuffer: `test_${recordId}.dat`,
       },
       keyboard: true,
-      pointMarkerColor: '#006eb0',
+      pointMarkerColor: "#006eb0",
       showPlayheadTime: true
     };
 
@@ -23,11 +23,11 @@ export const init = () => {
       }
       console.log("Peaks instance ready");
 
-      document.querySelector('[data-action="zoom-in"]').addEventListener('click', function() {
+      document.querySelector("[data-action=\"zoom-in\"]").addEventListener("click", function() {
         peaksInstance.zoom.zoomIn();
       });
 
-      document.querySelector('[data-action="zoom-out"]').addEventListener('click', function() {
+      document.querySelector("[data-action=\"zoom-out\"]").addEventListener("click", function() {
         peaksInstance.zoom.zoomOut();
       });
     });
