@@ -31,7 +31,7 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
         <label>Presence of heart beats ? </label>
         <input
           type="checkbox"
-          name="termsAndConditions"
+          name="hasHeartBeats"
           checked={Boolean(hasHeartBeats)}
           onChange={(): void => {
             setHasHeartBeats(!hasHeartBeats);
