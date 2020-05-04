@@ -1,10 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var https = require('https');
-var fs = require('fs');
 const appConfig = require('./src/config/appConfig.js');
 const StethoscopeRecord = require('./src/models/stethoscopeRecord.js');
-const { exec } = require("child_process");
 
 const app = express();
 const port = process.env.PORT || 5000;
