@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as PeaksInit from "./peaks-init";
+import * as PeaksInit from "./components/peaks-init";
 import * as serviceWorker from "./serviceWorker";
 
 let recordId = 1;

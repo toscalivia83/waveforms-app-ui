@@ -27,7 +27,8 @@ const AnnotationsPage = ({ displayAnnotation, onClick }: Props): React.ReactElem
   return (
     <div className={styles.container}>
       <button
-        onClick={(): void => onClick()}>
+        onClick={(): void => onClick()}
+        className={"btn btn-default"}>
         {!displayAnnotation ? "Display submitted infos" : "Hide submitted infos"}
       </button>
       {

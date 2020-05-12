@@ -46,7 +46,7 @@ const AudioForm = ({ peaksUrl, onSubmit }: Props): React.ReactElement => {
           onSubmit({ numberOfBreaths, hasHeartBeats, audioUrl: peaksUrl });
           reinitializeAudioFormDetails();
         }}
-        className={styles.submitButton}
+        className={"btn btn-default"}
       >Submit</button>
     </div>
   );

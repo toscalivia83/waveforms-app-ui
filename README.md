@@ -20,7 +20,8 @@ To look at what is inside your database in dev
 
 
 ## Improvements
+- Improve the styling, see the [Figma wireframes](https://www.figma.com/file/EZsRDqVIBQbjdL6QqQroDqOH/Todo-list-recorded) of what I'm planning to build
+- Add more tests (in NodeJs, and ui/visual regression tests)
+- Add express cookie
+- Export the get and post from NodeJs to a routes folder
 - Could generate the .dat from the .wav file in Nodejs and save it on the cloud, then use it in the FE, instead of saving them in the public folder.
-- Could add express cookie
-- Could export the get and post from NodeJs to a routes folder
-- Could improve the styling
