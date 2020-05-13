@@ -21,8 +21,7 @@
     "react-scripts": "3.4.1",
     "requirejs": "^2.3.6",
     "typescript": "^3.8.3",
-    "webpack-cli": "^3.3.11",
-    "winston": "^3.2.1"
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "start": "react-scripts start",
