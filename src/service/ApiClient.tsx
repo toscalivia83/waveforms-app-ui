@@ -17,7 +17,7 @@ export class ApiClient {
       },
       body: JSON.stringify(audioForm)
     };
-    const uri = `${this.host}/audio-form-results`;
+    const uri = `${this.host}/audio-annotations`;
     const response = await fetch(uri, requestOptions);
 
     try  {

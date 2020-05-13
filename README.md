@@ -21,3 +21,4 @@ To look at what is inside your database in dev
 ## Improvements
 - [ ] Improve the styling, see the [Figma wireframes](https://www.figma.com/file/EZsRDqVIBQbjdL6QqQroDqOH/Todo-list-recorded) of what I'm planning to build
 - [ ] Add more tests (ui/visual regression tests)
+- [ ] Make sure the .wav is requested only once
